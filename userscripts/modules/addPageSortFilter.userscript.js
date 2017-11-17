@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Canvas UX: Sort Module Pages
+// @name         Canvas UX - Module: Sort and Filter Adding Pages
 // @namespace    https://github.com/redice44
 // @version      0.0.1
-// @description  Sorts the pages list when adding a new page to a module
+// @description  Sorts and filters the pages list when adding a new page to a module
 // @author       Matt Thomson
 // @match        https://[YOUR URL]/courses/*/modules
 // @run-at       document-idle
