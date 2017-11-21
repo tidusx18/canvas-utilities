@@ -10,32 +10,91 @@
 
 (function() {
 
-  setTimeout(initUI, 200);
+  setTimeout(init, 500);
 
-})();
+  function init() {
 
-function initUI() {
+    initObservers();
+    initDeleteButton();
+    updateAllPages();
 
-  let uiEl = document.querySelector( '#content > div > div.header-bar-outer-container > div > div > div' );
-  let delEl = document.createElement( 'a' );
+  }
 
-  delEl.setAttribute( 'href', '#' );
-  delEl.classList.add( 'btn', 'btn-danger' );
-  delEl.innerText = 'Batch Delete'
-  delEl.style.marginRight = '5px';
-  delEl.addEventListener( 'click', batchDelete, false );
+  function initObservers() {
 
-  uiEl.insertBefore( delEl, uiEl.children[ 0 ] );
+    const pageObserver = new MutationObserver( pageMutation );
+    const loaderObserver = new MutationObserver( loaderMutation );
+    const loadMoreEl = document.querySelector( '#content > div > div.index-content-container > div.index-content > div.loading.loading-more' );
 
-  setupBatchDelete();
+    if ( loadMoreEl ) {
 
-}
+      const pagesContainerEl = document.querySelector( '#content div.index-content table > tbody.collectionViewItems' );
+      const loaderParentEl = document.querySelector( '#content > div.collectionView' );
 
-function setupBatchDelete() {
+      pageObserver.observe( pagesContainerEl, { childList: true } );
+      loaderObserver.observe( loaderParentEl, { childList: true } );
 
-  let pages = document.querySelectorAll( '#content > div > div.index-content-container > div > table > tbody > tr' );
+    }
 
-  for ( let i = 0; i < pages.length; i++ ) {
+  }
+
+  function initDeleteButton() {
+
+    let uiEl = document.querySelector( '#content > div > div.header-bar-outer-container > div > div > div' );
+    let delEl = document.createElement( 'a' );
+
+    delEl.setAttribute( 'href', '#' );
+    delEl.classList.add( 'btn', 'btn-danger' );
+    delEl.innerText = 'Batch Delete'
+    delEl.style.marginRight = '5px';
+    delEl.addEventListener( 'click', batchDelete, false );
+
+    uiEl.insertBefore( delEl, uiEl.children[ 0 ] );
+
+  }
+
+  function loaderMutation( mutations, observer ) {
+
+    mutations.forEach( ( mutation ) => {
+
+      const removedChildren = mutation.removedNodes;
+
+      if ( removedChildren.length > 0 ) {
+
+        // Canvas rebuilds the table, so add the checkbox again.
+        initDeleteButton();
+        updateAllPages();
+        observer.disconnect();
+
+      }
+
+    } );
+
+  }
+
+  function pageMutation( mutations ) {
+
+    mutations.forEach( ( mutation ) => {
+
+      console.log( `${mutation.type}: ++${mutation.addedNodes.length} || --${mutation.removedNodes.length}` );
+
+      if ( mutation.type === 'childList' ) {
+
+        const addedChildren = mutation.addedNodes;
+
+        for ( let i = 0; i < addedChildren.length; i++ ) {
+
+          addDeleteCheckbox( addedChildren[ i ] );
+
+        }
+
+      }
+
+    } );
+
+  }
+
+  function addDeleteCheckbox( pageContainerEl ) {
 
     let tdEl = document.createElement( 'td' );
     let inputEl = document.createElement( 'input' );
@@ -44,81 +103,93 @@ function setupBatchDelete() {
     inputEl.classList.add( 'batch-delete' );
 
     tdEl.appendChild( inputEl );
-    pages[ i ].appendChild( tdEl );
+    pageContainerEl.appendChild( tdEl );
 
   }
 
-}
+  function updateAllPages() {
 
-function batchDelete() {
+    let pages = document.querySelectorAll( '#content > div > div.index-content-container > div > table > tbody > tr' );
 
-  const method = 'DELETE';
-  const csrfToken = getCSRFToken();
-  const pages = document.querySelectorAll( '#content > div > div.index-content-container > div > table > tbody > tr' );
-  const delPages = [];
+    for ( let i = 0; i < pages.length; i++ ) {
 
-  for ( let i = 0; i < pages.length; i++ ) {
-
-    if ( pages[ i ].querySelector( 'input.batch-delete' ).checked ) {
-
-      delPages.push( i );
+      addDeleteCheckbox( pages[ i ] );
 
     }
 
   }
 
-  for ( let i = delPages.length - 1; i >= 0; i-- ) {
+  function batchDelete() {
 
-    const baseUrl = pages[ delPages[ i ] ].querySelector( 'a.wiki-page-link ').href.split( '/courses/' );
-    const url = `${baseUrl[ 0 ]}/api/v1/courses/${baseUrl[ 1 ]}`;
-    const request = buildRequest( method, url );
-    request.onreadystatechange = itemDeleted.bind( request, pages[ delPages[ i ] ] );
-    request.send( `_method=${method}&authenticity_token=${csrfToken}` );
+    const method = 'DELETE';
+    const csrfToken = getCSRFToken();
+    const pages = document.querySelectorAll( '#content > div > div.index-content-container > div > table > tbody > tr' );
+    const delPages = [];
 
-  }
+    for ( let i = 0; i < pages.length; i++ ) {
 
-}
+      if ( pages[ i ].querySelector( 'input.batch-delete' ).checked ) {
 
-function buildRequest( _method, queryURL ) {
+        delPages.push( i );
 
-  const request = new XMLHttpRequest();
+      }
 
-  request.open( _method, queryURL, true );
-  request.setRequestHeader( 'Accept', 'application/json, text/javascript, application/json+canvas-string-ids, */*; q=0.01' );
-  request.setRequestHeader( 'Accept-Language', 'en-US,en;q=0.9' );
-  request.setRequestHeader( 'Cache-Control', 'no-cache' );
-  request.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8' );
-  request.setRequestHeader( 'Pragma', 'no-cache' );
-  request.setRequestHeader( 'x-Requested-With', 'XMLHttpRequest' );
+    }
 
-  return request;
+    for ( let i = delPages.length - 1; i >= 0; i-- ) {
 
-}
-
-function itemDeleted( node ) {
-
-  if ( this.readyState == XMLHttpRequest.DONE && this.status == 200 ) {
-
-    node.parentElement.removeChild( node );
-
-  }
-
-}
-
-function getCSRFToken() {
-
-  const cookies = document.cookie.split( '; ');
-
-  for ( let i = 0; i < cookies.length; i++ ) {
-
-    if ( cookies[ i ].includes( '_csrf_token' ) ) {
-
-      return cookies[ i ].split( '=' )[ 1 ];
+      const baseUrl = pages[ delPages[ i ] ].querySelector( 'a.wiki-page-link ').href.split( '/courses/' );
+      const url = `${baseUrl[ 0 ]}/api/v1/courses/${baseUrl[ 1 ]}`;
+      const request = buildRequest( method, url );
+      request.onreadystatechange = itemDeleted.bind( request, pages[ delPages[ i ] ] );
+      request.send( `_method=${method}&authenticity_token=${csrfToken}` );
 
     }
 
   }
 
-  return null;
+  function buildRequest( _method, queryURL ) {
 
-}
+    const request = new XMLHttpRequest();
+
+    request.open( _method, queryURL, true );
+    request.setRequestHeader( 'Accept', 'application/json, text/javascript, application/json+canvas-string-ids, */*; q=0.01' );
+    request.setRequestHeader( 'Accept-Language', 'en-US,en;q=0.9' );
+    request.setRequestHeader( 'Cache-Control', 'no-cache' );
+    request.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8' );
+    request.setRequestHeader( 'Pragma', 'no-cache' );
+    request.setRequestHeader( 'x-Requested-With', 'XMLHttpRequest' );
+
+    return request;
+
+  }
+
+  function itemDeleted( node ) {
+
+    if ( this.readyState == XMLHttpRequest.DONE && this.status == 200 ) {
+
+      node.parentElement.removeChild( node );
+
+    }
+
+  }
+
+  function getCSRFToken() {
+
+    const cookies = document.cookie.split( '; ');
+
+    for ( let i = 0; i < cookies.length; i++ ) {
+
+      if ( cookies[ i ].includes( '_csrf_token' ) ) {
+
+        return cookies[ i ].split( '=' )[ 1 ];
+
+      }
+
+    }
+
+    return null;
+
+  }
+
+})();
