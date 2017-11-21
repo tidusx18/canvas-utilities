@@ -136,13 +136,17 @@
 
     }
 
-    for ( let i = delPages.length - 1; i >= 0; i-- ) {
+    if ( confirm( `Are you sure you want to delete ${delPages.length} page(s)?` ) ) {
 
-      const baseUrl = pages[ delPages[ i ] ].querySelector( 'a.wiki-page-link ').href.split( '/courses/' );
-      const url = `${baseUrl[ 0 ]}/api/v1/courses/${baseUrl[ 1 ]}`;
-      const request = buildRequest( method, url );
-      request.onreadystatechange = itemDeleted.bind( request, pages[ delPages[ i ] ] );
-      request.send( `_method=${method}&authenticity_token=${csrfToken}` );
+      for ( let i = delPages.length - 1; i >= 0; i-- ) {
+
+        const baseUrl = pages[ delPages[ i ] ].querySelector( 'a.wiki-page-link ').href.split( '/courses/' );
+        const url = `${baseUrl[ 0 ]}/api/v1/courses/${baseUrl[ 1 ]}`;
+        const request = buildRequest( method, url );
+        request.onreadystatechange = itemDeleted.bind( request, pages[ delPages[ i ] ] );
+        request.send( `_method=${method}&authenticity_token=${csrfToken}` );
+
+      }
 
     }
 
