@@ -24,52 +24,53 @@
   opts.sort( ( a, b ) => a.innerText > b.innerText ? 1 : -1 );
   opts.forEach( opt => { selectEl.appendChild( opt ); } );
 
-})();
+  function makeFilter() {
 
-function makeFilter() {
+    const parentEl = document.querySelector( '#wiki_pages_select' );
 
-  const parentEl = document.querySelector( '#wiki_pages_select' );
+    let divEl = document.createElement( 'div' );
+    let inputEl = document.createElement( 'input' );
+    let btnEl = document.createElement( 'button' );
 
-  let divEl = document.createElement( 'div' );
-  let inputEl = document.createElement( 'input' );
-  let btnEl = document.createElement( 'button' );
+    divEl.style.marginTop = '10px';
+    divEl.style.marginBottom = '10px';
 
-  divEl.style.marginTop = '10px';
-  divEl.style.marginBottom = '10px';
+    btnEl.innerText = 'Filter';
+    btnEl.classList.add('btn','btn-primary');
+    btnEl.style.marginRight = '10px';
 
-  btnEl.innerText = 'Filter';
-  btnEl.classList.add('btn','btn-primary');
-  btnEl.style.marginRight = '10px';
+    inputEl.classList.add( 'item_title' );
+    inputEl.setAttribute( 'type', 'text' );
+    inputEl.id = 'page_filter';
+    inputEl.style.marginBottom = '0';
 
-  inputEl.classList.add( 'item_title' );
-  inputEl.setAttribute( 'type', 'text' );
-  inputEl.id = 'page_filter';
-  inputEl.style.marginBottom = '0';
+    divEl.appendChild( btnEl );
+    divEl.appendChild( inputEl );
 
-  divEl.appendChild( btnEl );
-  divEl.appendChild( inputEl );
+    parentEl.insertBefore( divEl, document.querySelector( '#wiki_pages_select > div.new' ) );
 
-  parentEl.insertBefore( divEl, document.querySelector( '#wiki_pages_select > div.new' ) );
+    btnEl.addEventListener( 'click', e => {
 
-  btnEl.addEventListener( 'click', e => {
+      const opts = document.querySelectorAll( '#wiki_pages_select > div:nth-child(2) > select > option' );
+      const input = document.querySelector( '#wiki_pages_select #page_filter' ).value;
 
-    const opts = document.querySelectorAll( '#wiki_pages_select > div:nth-child(2) > select > option' );
-    const input = document.querySelector( '#wiki_pages_select #page_filter' ).value;
+      for ( let i = 1; i < opts.length; i++ ) {
 
-    for ( let i = 1; i < opts.length; i++ ) {
+        if ( !input ) {
 
-      if ( !input ) {
+          opts[ i ].style.display = 'block';
 
-        opts[ i ].style.display = 'block';
+        } else {
 
-      } else {
+          opts[ i ].style.display = opts[ i ].innerText.includes( input ) ? 'block' : 'none';
 
-        opts[ i ].style.display = opts[ i ].innerText.includes( input ) ? 'block' : 'none';
+        }
 
       }
 
-    }
+    } );
 
-  } );
+  }
 
-}
+})();
+
