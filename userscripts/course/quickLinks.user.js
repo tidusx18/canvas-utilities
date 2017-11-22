@@ -36,6 +36,9 @@
 
     const menuEl = document.querySelector( '#section-tabs' );
 
+    menuEl.insertBefore( document.createElement( 'hr' ), menuEl.children[ 0 ] );
+    menuEl.appendChild( document.createElement( 'hr' ) );
+
     for ( let i = 0; i < menuItems.length; i++ ) {
 
       let itemEl = makeMenuItem( menuItems[ i ].title, menuItems[ i ].url, menuItems[ i ].method );
