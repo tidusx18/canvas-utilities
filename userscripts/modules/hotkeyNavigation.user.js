@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Canvas UX - Module: Hotkey Navigation
 // @namespace    https://github.com/redice44
-// @version      0.0.1
+// @version      0.0.1a
 // @description  Adds arrow key navigation through modules
 // @author       Matt Thomson
 // @match        https://[YOUR URL]/courses/*?module_item_id=*
+// @match        https://[YOUR URL]/courses/*/modules/items/*
 // @run-at       document-idle
 // ==/UserScript==
 

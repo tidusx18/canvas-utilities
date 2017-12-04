@@ -17,6 +17,9 @@ Adds arrow key navigation through modules
 
 **Versions**
 
+- 0.0.1a
+  - Fix: URL match for external links
+
 - 0.0.1: Initial Release
   - Chrome v62.0 64-bit
   - Canvas Release 2017-10-28.32
