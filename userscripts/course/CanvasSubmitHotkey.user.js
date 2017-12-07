@@ -14,11 +14,13 @@
 
     const selectors = [
 
-      'button[type="submit"]', // General 'Save' buttons
-      '\.button_type_submit', // Module Item Edit
-      '\.add_item_button', // Add Module Item
-      '\.create_assignment', // Edit Assignment Item
-      '\.submit' // Pages
+      'div.form-actions button.submit', // Edit Pages
+      '#edit_assignment_form > .form-actions > button[type="submit"]', // Edit Assignments
+      '#edit_discussion_form_buttons > button[type="submit"]', // Edit Discussion
+      'button[type="submit"].save_quiz_button', // Edit Quiz
+      '.button_type_submit', // Module Item Edit
+      '.add_item_button', // Add Module Item
+      '.create_assignment', // Edit Assignment Item
 
     ];
 
