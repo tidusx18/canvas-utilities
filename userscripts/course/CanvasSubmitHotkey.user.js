@@ -2,7 +2,7 @@
 // @name         Canvas UX - Save Hotkey
 // @namespace    https://github.com/redice44
 // @version      0.0.1
-// @author       Daniel Vicotirano <victoriano518@gmail.com>
+// @author       Daniel Victoriano <victoriano518@gmail.com>
 // @description  Overrides browser default action for "Ctrl + s" hotkey to submit/save the current form/page.
 // @match        https://[YOUR-URL]/*
 // @grant        none
