@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Canvas Submit/Save Hotkey (Ctrl + s)
+// @name         Canvas UX - Save Hotkey
 // @namespace    https://github.com/redice44
 // @version      0.0.1
 // @author       Daniel Vicotirano <victoriano518@gmail.com>
@@ -9,43 +9,65 @@
 // ==/UserScript==
 
 (function() {
-	'use strict';
-	function submitPage(e) {
-		var selectors = [
-			'button[type="submit"]', // General 'Save' buttons
-			'\.button_type_submit', // Module Item Edit
-			'\.add_item_button', // Add Module Item
-			'\.create_assignment', // Edit Assignment Item
-			'\.submit' // Pages
-		];
 
-		if (e.keyCode === 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
-			e.preventDefault();
-			for(let selector of selectors) {
-				let selected = document.querySelector(selector);
-				if(selected) {
-					// console.log(selected);
-					selected.click();
-				} else {
-					console.log('No matching Submit button found.');
-				}
-			}
-		}
-	}
+  function submitPage( e ) {
 
-	document.addEventListener("KeyDown", function(event) {
-		submitPage(event);
-	}, false);
+    const selectors = [
 
-	window.addEventListener('load', function(event) {
-		if(tinymce) {
-			tinymce.on('AddEditor', function(e) {
-				console.log('TinyMCE Editor Added with ID: ', e.editor.id);
-				// Set listenser on editor
-				e.editor.on('keydown', function(event) {
-					submitPage(event);
-				});
-			});
-		}
-	});
+      'button[type="submit"]', // General 'Save' buttons
+      '\.button_type_submit', // Module Item Edit
+      '\.add_item_button', // Add Module Item
+      '\.create_assignment', // Edit Assignment Item
+      '\.submit' // Pages
+
+    ];
+
+    const sKeyCode = 83;
+    const ctrlKey = navigator.platform.match( 'Mac' ) ? e.metaKey : e.ctrlKey;
+
+    if ( e.keyCode === sKeyCode && ctrlKey ) {
+
+      e.preventDefault();
+
+      for ( let selector of selectors ) {
+
+        let selected = document.querySelector( selector );
+
+        if ( selected ) {
+
+          selected.click();
+
+          return;
+
+        }
+
+      }
+
+      console.log( 'No matching Submit button found.' );
+
+    }
+
+  }
+
+  function tinyMCEHandler( e ) {
+
+    if ( tinymce ) {
+
+      const addHandler = e => {
+
+        console.log( `TinyMCE Editor Added with ID: ${ e.editor.id }` );
+
+        e.editor.on( 'keydown', submitPage );
+
+      };
+
+      tinymce.on( 'AddEditor', addHandler );
+
+    }
+
+  }
+
+  document.addEventListener( 'keydown', submitPage, false);
+  window.addEventListener('load', tinyMCEHandler );
+
 })();
