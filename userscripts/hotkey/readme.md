@@ -1,5 +1,17 @@
 # Canvas User Scripts: Hotkeys
 
+
+### Edit Content
+
+Hotkey: "ctrl/cmd + p" hotkey to publish content.
+
+**Versions**
+
+- 0.0.1: Initial Release
+  - Chrome v62.0 64-bit
+  - Canvas Release 2017-10-28.32
+
+
 ### Edit Content
 
 Hotkey: "ctrl/cmd + e" to edit content.
