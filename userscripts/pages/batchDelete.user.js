@@ -10,7 +10,7 @@
 
 (function() {
 
-  setTimeout(init, 500);
+  setTimeout( init, 500 );
 
   function init() {
 
@@ -75,8 +75,6 @@
   function pageMutation( mutations ) {
 
     mutations.forEach( ( mutation ) => {
-
-      console.log( `${mutation.type}: ++${mutation.addedNodes.length} || --${mutation.removedNodes.length}` );
 
       if ( mutation.type === 'childList' ) {
 
