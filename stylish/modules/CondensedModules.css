@@ -1,0 +1,23 @@
+/*
+
+  Author: Matthew Thomson
+
+  URL Regex: https://[YOUR URL HERE]/courses/.+/modules.*
+
+*/
+
+.ig-list .ig-row {
+    padding: 0 0 0 12px;
+}
+ul.ig-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+#context_modules {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.context_module {
+    flex-grow: 1
+}
