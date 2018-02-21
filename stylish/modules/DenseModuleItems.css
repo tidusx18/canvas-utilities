@@ -1,0 +1,16 @@
+/*
+
+  Author: Matthew Thomson
+  Style: Dense Module Items
+
+  Module Items are more densely packed together. Useful for modules with large amounts of content.
+
+  URL Regex: https://[YOUR URL HERE]/courses/.+/modules.*
+
+  Version: 0.0.3
+
+*/
+
+.ig-list .ig-row {
+    padding: 0 0 0 12px;
+}

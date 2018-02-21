@@ -1,0 +1,17 @@
+/*
+
+  Author: Matthew Thomson
+  Style: Scroll Modules
+
+  Restricts max height of module item lists, and adds a scroll bar as necessary.
+
+  URL Regex: https://[YOUR URL HERE]/courses/.+/modules.*
+
+  Version: 0.0.1
+
+*/
+
+ul.ig-list {
+    max-height: 300px;
+    overflow-y: auto;
+}

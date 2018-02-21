@@ -1,20 +1,16 @@
 /*
 
   Author: Matthew Thomson
+  Style: Grid Modules
+
+  Aligns modules in a grid. Useful on large displays to reduce negative space.
 
   URL Regex: https://[YOUR URL HERE]/courses/.+/modules.*
 
-  Version: 0.0.2
+  Version: 0.0.1
 
 */
 
-.ig-list .ig-row {
-    padding: 0 0 0 12px;
-}
-ul.ig-list {
-    max-height: 300px;
-    overflow-y: auto;
-}
 #context_modules {
     display: flex;
     flex-wrap: wrap;
