@@ -4,6 +4,8 @@
 
   URL Regex: https://[YOUR URL HERE]/courses/.+/modules.*
 
+  Version: 0.0.2
+
 */
 
 .ig-list .ig-row {
@@ -20,4 +22,7 @@ ul.ig-list {
 }
 .context_module {
     flex-grow: 1
+}
+#wrapper {
+    max-width: 100%
 }
