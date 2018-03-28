@@ -15,7 +15,11 @@ Displays teacher name on course list
 Adds quick links to deeply nested items.
 
 **Versions**
+  - Chrome v64.0 64-bit
+  - Canvas Revision 2018-03-10.31
 
+- 0.0.3: Adds a link to the rubrics' page.
+  -
 - 0.0.2: Adds a link to all pages.
   - Chrome v63.0 64-bit
   - Canvas Revision 2018-02-17.16

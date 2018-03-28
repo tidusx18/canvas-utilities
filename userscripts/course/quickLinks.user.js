@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Canvas UI - Course: Quick Links
 // @namespace    https://github.com/redice44
-// @version      0.0.2
+// @version      0.0.3
 // @description  Adds quick links to deeply nested items.
 // @author       Matt Thomson
 // @match        https://[YOUR URL]/courses/*
@@ -16,6 +16,13 @@
 
       title: 'Question Banks',
       url: '/question_banks',
+      addToTop: true
+
+    },
+    {
+
+      title: 'Rubrics',
+      url: '/rubrics',
       addToTop: true
 
     },
