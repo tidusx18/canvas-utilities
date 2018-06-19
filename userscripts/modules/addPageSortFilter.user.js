@@ -4,7 +4,7 @@
 // @version      0.0.1
 // @description  Sorts and filters the pages list when adding a new page to a module
 // @author       Matt Thomson
-// @match        https://[YOUR URL]/courses/*/modules
+// @match        https://fiu.instructure.com/courses/*/modules
 // @run-at       document-idle
 // ==/UserScript==
 

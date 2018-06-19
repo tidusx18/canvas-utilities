@@ -4,7 +4,7 @@
 // @version      0.0.1
 // @description  Provides batch delete
 // @author       Matt Thomson
-// @match        https://[YOUR URL]/courses/*/pages
+// @match        https://fiu.instructure.com/courses/*/pages
 // @run-at       document-idle
 // ==/UserScript==
 

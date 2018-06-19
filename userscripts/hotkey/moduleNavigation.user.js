@@ -5,20 +5,20 @@
 // @description  Hotkey: Left and right arrow key navigation through module content.
 // @author       Matt Thomson <red.cataclysm@gmail.com>
 
-// @include      https://[YOUR URL]/courses/*/assignments/*
-// @include      https://[YOUR URL]/courses/*/discussion_topics/*
-// @include      https://[YOUR URL]/courses/*/files/*
-// @include      https://[YOUR URL]/courses/*/modules/items/*
-// @include      https://[YOUR URL]/courses/*/pages/*
-// @include      https://[YOUR URL]/courses/*/quizzes/*
+// @include      https://fiu.instructure.com/courses/*/assignments/*
+// @include      https://fiu.instructure.com/courses/*/discussion_topics/*
+// @include      https://fiu.instructure.com/courses/*/files/*
+// @include      https://fiu.instructure.com/courses/*/modules/items/*
+// @include      https://fiu.instructure.com/courses/*/pages/*
+// @include      https://fiu.instructure.com/courses/*/quizzes/*
 
-// @exclude      https://[YOUR URL]/courses/*/assignments/*/edit*
-// @exclude      https://[YOUR URL]/courses/*/discussion_topics/*/edit*
-// @exclude      https://[YOUR URL]/courses/*/pages/*/edit*
-// @exclude      https://[YOUR URL]/courses/*/quizzes/*/edit*
+// @exclude      https://fiu.instructure.com/courses/*/assignments/*/edit*
+// @exclude      https://fiu.instructure.com/courses/*/discussion_topics/*/edit*
+// @exclude      https://fiu.instructure.com/courses/*/pages/*/edit*
+// @exclude      https://fiu.instructure.com/courses/*/quizzes/*/edit*
 
-// @exclude      https://[YOUR URL]/courses/*/assignments/new
-// @exclude      https://[YOUR URL]/courses/*/discussion_topics/new
+// @exclude      https://fiu.instructure.com/courses/*/assignments/new
+// @exclude      https://fiu.instructure.com/courses/*/discussion_topics/new
 
 // @run-at       document-idle
 // ==/UserScript==

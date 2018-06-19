@@ -4,8 +4,8 @@
 // @version      0.0.1
 // @author       Matt Thomson <red.cataclysm@gmail.com>
 // @description  Enlarges the find external tool modal.
-// @include      https://[YOUR URL]/courses/*/assignments/*/edit*
-// @include      https://[YOUR URL]/courses/*/assignments/new
+// @include      https://fiu.instructure.com/courses/*/assignments/*/edit*
+// @include      https://fiu.instructure.com/courses/*/assignments/new
 // @run-at       document-idle
 // ==/UserScript==
 

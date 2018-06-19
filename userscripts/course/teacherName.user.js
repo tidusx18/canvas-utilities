@@ -4,7 +4,7 @@
 // @version      0.0.1
 // @description  Displays teacher name on course list
 // @author       Matt Thomson
-// @match        https://[YOUR URL]/courses
+// @match        https://fiu.instructure.com/courses
 // @run-at       document-idle
 // ==/UserScript==
 

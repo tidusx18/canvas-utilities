@@ -4,7 +4,7 @@
 // @version      0.0.3
 // @description  Adds quick links to deeply nested items.
 // @author       Matt Thomson
-// @match        https://[YOUR URL]/courses/*
+// @match        https://fiu.instructure.com/courses/*
 // @run-at       document-idle
 // ==/UserScript==
 

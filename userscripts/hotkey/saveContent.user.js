@@ -6,13 +6,13 @@
 // @author       Matt Thomson <red.cataclysm@gmail.com>
 // @description  Hotkey: "ctrl/cmd + s" to save content.
 
-// @include      https://[YOUR URL]/courses/*/assignments/*/edit*
-// @include      https://[YOUR URL]/courses/*/discussion_topics/*/edit*
-// @include      https://[YOUR URL]/courses/*/pages/*/edit*
-// @include      https://[YOUR URL]/courses/*/quizzes/*/edit*
+// @include      https://fiu.instructure.com/courses/*/assignments/*/edit*
+// @include      https://fiu.instructure.com/courses/*/discussion_topics/*/edit*
+// @include      https://fiu.instructure.com/courses/*/pages/*/edit*
+// @include      https://fiu.instructure.com/courses/*/quizzes/*/edit*
 
-// @include      https://[YOUR URL]/courses/*/assignments/new
-// @include      https://[YOUR URL]/courses/*/discussion_topics/new
+// @include      https://fiu.instructure.com/courses/*/assignments/new
+// @include      https://fiu.instructure.com/courses/*/discussion_topics/new
 // ==/UserScript==
 
 (function() {
