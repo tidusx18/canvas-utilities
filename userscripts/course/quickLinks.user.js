@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Canvas UI - Course: Quick Links
 // @namespace    https://github.com/redice44
-// @version      0.0.3
+// @version      0.0.4
 // @description  Adds quick links to deeply nested items.
 // @author       Matt Thomson
 // @match        https://fiu.instructure.com/courses/*
