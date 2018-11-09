@@ -16,21 +16,21 @@
 
       title: 'Question Banks',
       url: '/question_banks',
-      addToTop: true
+      addToTop: false
 
     },
     {
 
       title: 'Rubrics',
       url: '/rubrics',
-      addToTop: true
+      addToTop: false
 
     },
     {
 
       title: 'Student View',
       url: '/student_view',
-      addToTop: true,
+      addToTop: false,
       method: 'post'
 
     },
@@ -38,7 +38,7 @@
 
       title: 'All Pages',
       url: '/pages',
-      addToTop: true
+      addToTop: false
 
     },
     {
