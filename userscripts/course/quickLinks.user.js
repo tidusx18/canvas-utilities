@@ -40,6 +40,13 @@
       url: '/pages',
       addToTop: true
 
+    },
+    {
+
+      title: 'Import',
+      url: '/content_migrations',
+      addToTop: false
+
     }
 
   ];
